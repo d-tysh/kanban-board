@@ -2,7 +2,7 @@ import { createAction, createAsyncThunk } from "@reduxjs/toolkit";
 import { Octokit } from "octokit";
 import { IIssuesState } from "../../interfaces/interfaces";
 
-const token = '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';
+const token = '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';
 
 const octokit = new Octokit({
     auth: token
