@@ -25,7 +25,7 @@ export const IssuesBoard = () => {
             {isLoading && <Loader />}
             {
                 !isLoading && !isError && repoDetails &&
-                <Flex gap={20}>
+                <Flex gap={20} color='#213547'>
                     <Text>
                         <Link data-cy='link-owner' href={repoDetails.owner.html_url} target="_blank" >
                             {repoDetails.owner.login}
@@ -40,7 +40,7 @@ export const IssuesBoard = () => {
             }
             {
                 !isLoading && !isError && issues.length ?
-                    <HStack spacing={24} alignItems='start' justifyContent='space-between'>
+                    <HStack spacing={24} alignItems='start' justifyContent='space-between' color='#213547'>
                         <IssuesBoardList listId='open' issues={issuesToDo} title='ToDo' />
                         <IssuesBoardList listId='inProgress' issues={issuesInProgress} title='In Progress' />
                         <IssuesBoardList listId='done' issues={issuesDone} title='Done' />

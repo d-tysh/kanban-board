@@ -41,7 +41,7 @@ export const Header = () => {
     };
 
     return (
-        <FormControl as='form' onSubmit={handleLoadRepo} display="flex" gap="8" justifyContent='center'>
+        <FormControl as='form' onSubmit={handleLoadRepo} display="flex" gap="8" justifyContent='center' color='#213547'>
             <Input
                 value={repoUrl}
                 onChange={(e) => setRepoUrl(e.target.value)}
