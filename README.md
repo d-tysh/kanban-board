@@ -28,3 +28,5 @@ To run this client app, follow these steps:
 3. Install NPM.
 4. Start the project by "npm run dev".
 3. Open the project using a development server.
+
+You can see the working project at the link [d-tysh.github.io/kanban-board](https://d-tysh.github.io/kanban-board/).

@@ -1,10 +1,9 @@
 import { createAction, createAsyncThunk } from "@reduxjs/toolkit";
-// import { Octokit } from "octokit";
 import { IIssuesState } from "../../interfaces/interfaces";
 import axios from "axios";
+// import { Octokit } from "octokit";
 
 // const token = '';
-
 // const octokit = new Octokit({
 //     auth: token
 // })
