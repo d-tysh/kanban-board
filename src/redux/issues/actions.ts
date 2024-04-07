@@ -9,6 +9,8 @@ import axios from "axios";
 //     auth: token
 // })
 
+const baseURL = 'https://server-kanban-board.vercel.app';
+
 export const fetchIssues = createAsyncThunk(
     'issues/fetchIssues',
     async ({owner, repo, repoURL}: {owner: string, repo: string, repoURL: string}, thunkAPI) => {
@@ -34,7 +36,7 @@ export const fetchIssues = createAsyncThunk(
         // }
 
         try {
-            const response = await axios.get(`https://9c63-178-54-169-15.ngrok-free.app/repos/${owner}/${repo}/issues`, {
+            const response = await axios.get(`${baseURL}/repos/${owner}/${repo}/issues`, {
                 headers: {
                     'ngrok-skip-browser-warning': 'true'
                 }
@@ -64,7 +66,7 @@ export const fetchRepoDetails = createAsyncThunk(
         // }
 
         try {
-            const response = await axios.get(`https://9c63-178-54-169-15.ngrok-free.app/repos/${owner}/${repo}`, {
+            const response = await axios.get(`${baseURL}/repos/${owner}/${repo}`, {
                 headers: {
                     'ngrok-skip-browser-warning': 'true'
                 }
