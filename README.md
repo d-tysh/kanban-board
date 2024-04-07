@@ -1,6 +1,8 @@
 # Kanban Board
 This project aims to implement a GitHub repository issues viewer as a kanban board, allowing users to manage issues efficiently. Users can input a GitHub repository URL, load the repository's issues, and then organize them into columns representing different stages of completion.
 
+You can see the working project at the link [D-TYSH.GITHUB.IO/KANBAN-BOARD](https://d-tysh.github.io/kanban-board/).
+
 ## Requirements
 1. User should enter repo URL in the input on top of the page and press "Load". For example: `https://github.com/facebook/react`.
 2. App loads issues for the repo using Github API.
@@ -14,12 +16,11 @@ This project aims to implement a GitHub repository issues viewer as a kanban boa
 6. User should be able to visit the profile of the owner of the repo and visit the repo as well by links under the input.
 
 ## Technologies
-React 18 with hooks, no classes
-Typescript
-UI library (on your choice): Chakra UI
-State manager (on your choice): Redux-Toolkit
-Testing (on your choice): Cypress
-
+- React 18 with hooks, no classes
+- Typescript
+- UI library: Chakra UI
+- State manager: Redux-Toolkit
+- Testing: Cypress
 
 ## Usage
 To run this client app, follow these steps:
@@ -28,5 +29,3 @@ To run this client app, follow these steps:
 3. Install NPM.
 4. Start the project by "npm run dev".
 3. Open the project using a development server.
-
-You can see the working project at the link [d-tysh.github.io/kanban-board](https://d-tysh.github.io/kanban-board/).
