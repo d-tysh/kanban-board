@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import { fetchIssues, fetchRepoDetails, setCurrRepoUrl } from "../redux/issues/actions";
 import { useAppDispatch } from "../hooks";
 import { getFullUrl, getHostName, getOwnerAndRepo } from "../utils/utils";
+import axios from "axios";
 
 export const Header = () => {
     const [repoUrl, setRepoUrl] = useState('');
@@ -40,6 +41,14 @@ export const Header = () => {
         dispatch(fetchIssues(getOwnerAndRepo(repoUrl)));
     };
 
+    const btnClick = () => {
+        axios.get('https://7eaa-178-54-169-15.ngrok-free.app/abc/api/movies', { 
+            'headers': { 'ngrok-skip-browser-warning': 'Test' } 
+        })
+            .then(res => console.log(res))
+            .catch(e => console.error(e));
+    }
+
     return (
         <FormControl as='form' onSubmit={handleLoadRepo} display="flex" gap="8" justifyContent='center'>
             <Input
@@ -61,6 +70,14 @@ export const Header = () => {
                 data-cy='btn-search-repo'
             >
                 Load issues
+            </Button>
+            <Button
+                onClick={btnClick}
+                bgColor="#CBD5E0"
+                _hover={{ border: "1px solid #718096" }}
+                data-cy='btn-search-repo'
+            >
+                Test
             </Button>
         </FormControl>
     )
