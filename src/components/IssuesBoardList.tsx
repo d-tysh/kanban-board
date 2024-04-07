@@ -21,7 +21,7 @@ export const IssuesBoardList = ({issues, title, listId}: IIssuesBoardListProps) 
     }
 
     return (
-        <Box width={250} color='#213547'>
+        <Box width={250}>
             <Heading as='h2' textAlign='center' mb={0}>{title} ({issues.length})</Heading>
             <List 
                 data-cy='issues-list'
@@ -35,6 +35,7 @@ export const IssuesBoardList = ({issues, title, listId}: IIssuesBoardListProps) 
                 border='2px solid gray'
                 minH={200}
                 textAlign='center'
+                color='#213547'
                 bgColor='#E2E8F0'
             >
                 {
