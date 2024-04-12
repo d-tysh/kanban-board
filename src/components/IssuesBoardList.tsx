@@ -13,7 +13,7 @@ export const IssuesBoardList = ({issues, title, listId}: IIssuesBoardListProps) 
 
     const handleDragOver = (e: IDragEvent) => {
         dispatch(setCurrBoard(listId));
-        e.currentTarget.style.background = 'gray';
+        e.currentTarget.style.background = '#718096';
     }
 
     const handleLeaveAndDrop = (e: IDragEvent) => {
@@ -25,29 +25,13 @@ export const IssuesBoardList = ({issues, title, listId}: IIssuesBoardListProps) 
             <Heading as='h2' textAlign='center' mb={0}>{title} ({issues.length})</Heading>
             <List 
                 data-cy='issues-list'
-                onDragOver={handleDragOver}
-                onDragLeave={handleLeaveAndDrop}
-                onDrop={handleLeaveAndDrop}
-                className="list" 
-                fontSize={12} 
-                p={10} 
-                m={0} 
-                border='2px solid gray'
-                minH={500}
-                textAlign='center'
-                color='#213547'
-                bgColor='#E2E8F0'
+                p={10} m={0} border='2px solid gray' minH={500} textAlign='center' 
+                color='#213547' bgColor='#E2E8F0' fontSize={12} 
+                onDragOver={handleDragOver} onDragLeave={handleLeaveAndDrop} onDrop={handleLeaveAndDrop}
             >
                 {
-                    Array.isArray(issues) && !issues.length 
-                    ? <>No issues with status "{title}"...</> 
-                    : issues?.map(item => (
-                        <IssuesBoardItem 
-                            item={item} 
-                            key={item.id}
-                            currBoard={currBoard}
-                        />
-                    ))
+                    !issues.length ? <>No issues with status "{title}"...</> 
+                    : issues.map(item => <IssuesBoardItem item={item} key={item.id} currBoard={currBoard}/>)
                 }
             </List>
         </Box>

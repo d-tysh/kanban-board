@@ -1,3 +1,5 @@
+import { IIssue, IReduceIssues } from "../interfaces/interfaces";
+
 export const getFullUrl = (url: string) => {
     try {
         const repoUrl = new URL(url);
@@ -30,4 +32,20 @@ export const cutString = (num: number) => {
         return str + ' K';
     }
     return str;
+}
+
+export const getCreatedAt = (item: IIssue, setDate: (date: string) => void) => {
+    const now = new Date();
+        const createdAt = new Date(item.created_at);
+        const result = ((now.getTime() - createdAt.getTime())/(1000 * 60 * 60));
+        return result <= 24 ? setDate(`${Math.floor(result)} hours ago`) : setDate(`${Math.floor(result / 24)} days ago`);
+}
+
+export const getFilteredIssues = (issues: IIssue[]) => {
+    return issues.reduce((acc: IReduceIssues, current: IIssue) => {
+        if (current.state === 'open') acc.issuesToDo.push(current);
+        if (current.state === 'inProgress') acc.issuesInProgress.push(current);
+        if (current.state === 'done') acc.issuesDone.push(current);
+        return acc;
+    }, { issuesToDo: [], issuesInProgress: [], issuesDone: [] })
 }

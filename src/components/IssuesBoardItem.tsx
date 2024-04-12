@@ -6,6 +6,7 @@ import { setIssueStatus } from "../redux/issues/actions";
 import { IIssue } from "../interfaces/interfaces";
 import { useSelector } from "react-redux";
 import { selectCurrBoard } from "../redux/issues/selectors";
+import { getCreatedAt } from "../utils/utils";
 
 export const IssuesBoardItem = ({item}: {item: IIssue, currBoard: string}) => {
     const [date, setDate] = useState('');
@@ -13,11 +14,8 @@ export const IssuesBoardItem = ({item}: {item: IIssue, currBoard: string}) => {
     const currBoard = useSelector(selectCurrBoard);
 
     useEffect(() => {
-        const now = new Date();
-        const createdAt = new Date(item.created_at);
-        const result = ((now.getTime() - createdAt.getTime())/(1000 * 60 * 60));
-        result <= 24 ? setDate(`${Math.floor(result)} hours ago`) : setDate(`${Math.floor(result / 24)} days ago`);
-    }, [item.created_at])
+        getCreatedAt(item, setDate);
+    }, [item])
 
     const setStatus = (id: number, status: string) => {
         dispatch(setIssueStatus({id, status}));
@@ -30,16 +28,9 @@ export const IssuesBoardItem = ({item}: {item: IIssue, currBoard: string}) => {
     return (
         <ListItem
             data-cy='issues-list-item'
-            draggable={true}
-            onDragEnd={handleDragEnd}
-            className="list-item"
-            border='4px solid'
-            borderRadius={20}
-            p={8}
-            mb={12}
-            wordBreak="break-word"
-            bgColor='#F7FAFC'
-            _hover={{ cursor: 'grab', bgColor: '#EDF2F7' }}
+            draggable={true} onDragEnd={handleDragEnd} 
+            p={8} mb={12} wordBreak="break-word" bgColor='#F7FAFC' border='4px solid' borderRadius={20} 
+            _hover={{ cursor: 'grab', bgColor: '#CBD5E0' }}
         >
             <Heading as='h3' m={0} maxWidth="100%">{item.title}</Heading>
             <p>#{item.number} created {date}</p>
