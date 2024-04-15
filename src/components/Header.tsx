@@ -4,6 +4,7 @@ import { useRef, useState } from "react";
 import { fetchIssues, fetchRepoDetails, setCurrRepoUrl } from "../redux/issues/actions";
 import { useAppDispatch } from "../hooks";
 import { getFullUrl, getHostName, getOwnerAndRepo } from "../utils/utils";
+import { message } from "../constants";
 
 export const Header = () => {
     const [repoUrl, setRepoUrl] = useState('');
@@ -15,18 +16,15 @@ export const Header = () => {
     const handleLoadRepo = (e: FormEvent) => {
         e.preventDefault();
         if (!repoUrl.length) {
-            toast({title: 'Enter repo URL!', status: 'error', isClosable: true, duration: 3000});
+            toast({title: message.error, status: 'error', isClosable: true, duration: 3000});
             return;
         }
         if (urlRef.current === getFullUrl(repoUrl)) {
-            toast({
-                title: 'You have already got information from this repository.', 
-                status: 'info', isClosable: true, duration: 3000 
-            });
+            toast({title: message.info, status: 'info', isClosable: true, duration: 3000});
             return;
         }
         if (getHostName(repoUrl) !== 'github.com') {
-            toast({title: 'You should enter URL from github.com!', status: 'warning', isClosable: true, duration: 3000});
+            toast({title: message.warning, status: 'warning', isClosable: true, duration: 3000});
             return;
         }
         urlRef.current = getFullUrl(repoUrl);

@@ -14,7 +14,9 @@ export const RepoDetails = ({repoDetails}) => {
                     {repoDetails.name}
                 </Link>
             </Text>
-            <Text data-cy='rating-repo'>&#11088; {cutString(repoDetails.stargazers_count)}</Text>
+            <Text data-cy='rating-repo'>
+                &#11088; {cutString(repoDetails.stargazers_count)}
+            </Text>
         </Flex>
     )
 }
